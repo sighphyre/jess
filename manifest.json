@@ -1,0 +1,6 @@
+{
+  "name": "polytestapp",
+  "short_name": "polytestapp",
+  "start_url": "/",
+  "display": "standalone"
+}

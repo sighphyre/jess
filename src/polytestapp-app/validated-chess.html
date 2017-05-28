@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/poly-chess/poly-chess.html">
+<link rel="import" href="chess-wrapper.html">
+
+<dom-module id="validated-chess">
+  <template>
+    <style is="custom-style" type="text/css">
+      :host {
+        display: block;
+      }
+
+    </style>  
+    <p>Currently [[formatPlayer(activePlayer)]] to move</p>
+    <poly-chess id="chessboard" width="480"></poly-chess>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'validated-chess',
+      properties: {
+        chess: {
+            type:Object,
+            value: new Chess()
+        },
+        activePlayer: {
+            type:String,
+            value: "w"
+        }             
+      },
+      formatPlayer(activePlayer){
+        if(activePlayer === "w"){
+            return "white"
+        }
+        return "black"
+      },
+      ready(){
+        this.$.chessboard.acceptMove = function(from, to, colour, type){            
+            var move = this.chess.move({ from: from, to: to });            
+            this.activePlayer = this.chess.turn();
+            return move != null;            
+        }.bind(this);
+      },         
+    });
+    
+  </script>
+</dom-module>

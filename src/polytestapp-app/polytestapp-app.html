@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/poly-chess/poly-chess.html">
+<link rel="import" href="validated-chess.html">
+
+<dom-module id="polytestapp-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <validated-chess></validated-chess>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'polytestapp-app',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'polytestapp-app',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
